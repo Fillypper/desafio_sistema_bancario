@@ -1,21 +1,11 @@
-""" operação deposito
-    Deve ser possivel depositar valores positivos para minha cota bancaria
-    Todos os depósitos devem ser armazenados em uma variável e exibidos na operação de extrato    
-    """
+"""
+Falhas no projeto, pode sacar mesmo com saldo zerado.
+Após entrar em depositar ou sacar e digitar uma letra, o programa da erro.
 
-""" operação saque
-    O sistea deve permitir realizar 3 saques diários com limite máximo de R$ 500,00 por saque.
-    Caso o usuário não tenha saldo, exibir mensagem "não será possivel sacar o dinheiro, saldo insuficiente.
-    Todos os saques devem ser armazenados em uma variável e exibidos na operação extrato   
-    """
-
-""" operação de extrato
-    essa operação deve listar todos os depósitos e saques realizados na conta. no fim da listagem deve ser exibido o saldo atual da conta.
-    Os valores devem ser exibidos utilizando o formatado R$ 000.00, Ex: 1500.45 = R$ 1500.45 
-    """
+"""
 
 menu = """
-
+# 
 [d] Depositar
 [s] Sacar
 [e] Extrato
@@ -24,7 +14,7 @@ menu = """
 
 =>"""
 
-saldo = 0
+saldo, cont = 0, 0
 limite = 500
 extrato = ""
 numero_saques = 0
@@ -33,18 +23,42 @@ LIMITE_SAQUES = 3
 while True:
 
     opcao = input(menu)
-
+ 
     if opcao == 'd':
-        print("Depósito")
+        valor = int(input("Qual valor deseja depositar?: "))
+        saldo += valor
+        print(f"Seu saldo total na conta é de R$ {saldo:.2f}")
+        extrato += f"Deposito de R$ {saldo:.2f}\n"
 
     elif opcao == 's':
-        print("Depósito")
+        saque = int(input("Qual valor você deseja saca?: "))
+        if saque <= limite:
+            if cont < LIMITE_SAQUES:
+                saldo -= saque
+                cont +=1
+                print("Saque realizado com sucesso!")
+                print(f"Seu saldo agora é de R${saldo:.2f}")
+                extrato += f"Saque de R$ {saldo:.2f}\n"
+            else:
+                print("Você excedeu o limite de 3 saques diários")
+        else:
+            print("O valor sacado deve ser menor do que R$500.00")
+
 
     elif opcao == 'e':
-        print("Depósito")
+        extratos = "Extrato Bancário"
+        print(f"{extratos:=^50}")
+        print(f"{extrato:^50}")
+        print("Não foram realizadas movimentações" if not extrato else extrato)
+        print("-"*50)
+        print(f"Saldo: {saldo:.2f}")
+        
+        
+
 
     elif opcao == 'q':
-        print("Depósito")
+        print("Muito obrigado por utilizar nosso sistema!")
+        break
         
     else:
         print("Operação inválida, por favor selecione novamente a poeração desejada.")
