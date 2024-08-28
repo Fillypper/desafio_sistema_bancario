@@ -42,7 +42,27 @@ DICA
 
 Para vincular um usuário a uma conta, filtra a lista de usuários buscando o número do CPF informado para cada usuário na lista.
 
-
-
 """
 
+
+
+
+def saque(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
+    return
+
+def deposito(saldo, valor, extrato):
+    return saldo, extrato
+
+def extrato(saldo, /, extrato):
+    return
+
+def criar_usuario(nome, data_nascimento, cpf, endereco):
+    #Para vincular um usuário a uma conta, filtra a lista de usuários buscando o número do CPF informado para cada usuário na lista.
+    return
+
+def criar_conta_corrente(agencia, numero_conta, usuario):
+    #O Número da conta é sequencial, iniciando em 1. O número da agência é fixo: "0001". O usuário pode ter mais de uma conta, mas uma conta pertence a somente um usuário.
+    return
+
+def listar_contas():
+    return
